@@ -37,3 +37,4 @@ tmp
 
 /win32/Release
 /win32/Debug
+/win32/x64
