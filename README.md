@@ -7,7 +7,7 @@ Apache Server LFS Module
 
 ### Install
 
-* Download the binary (or compile for your self) from [latest relase]
+* Download the binary (or compile for your self) from [latest releasse]
 * copy `mod_git_lfs.so` to httpd modules
 * copy `httpd-git.conf(not authz)` to httpd conf.d and edit
 
@@ -55,7 +55,8 @@ git init --bare
 * update `group/test.git/conf` to add 
 
 ```
-[http]	receivepack = true
+[http]
+	receivepack = true
 ```
 
 * clone `git clone http://loc.g/group/test.git`
