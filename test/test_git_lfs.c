@@ -5,12 +5,17 @@ void test_file_c();
 void test_json_c();
 int main()
 {
+    apr_initialize();
+    // exit(1);
+    do
     {
-        test_file_c();
-        test_json_c();
-        // json_object *ary = json_object_new_array();
-        // json_object_array_add()
-    }
+        for (int i = 0; i < 10000; i++)
+        {
+            test_file_c();
+            test_json_c();
+        }
+        sleep(1);
+    } while (1);
     printf("test done...\n");
     return 0;
 }
@@ -52,6 +57,7 @@ void test_json_c()
             printf("read json array fail->\n");
             exit(1);
         }
+        // json_object_put((json_object *)aval);
         if ((aval = json_object_get_array_v(json, "xxx")) != NULL)
         {
             printf("read json array fail->\n");
@@ -70,7 +76,8 @@ void test_json_c()
     //
     //test new res
     {
-        json_object *res = json_object_new_res("abc", 1, "http://xx", "a", 1, 0, 0);
+        //const char *oid, size_t size, const char *href_base, const char *prefix, const char *authz, int download, int upload, int code, const char *message)
+        json_object *res = json_object_new_res("abc", 1, "http://xx", "a", "", 1, 1, 0, 0);
         json_object_to_file("a.json", res);
         // printf("->%d\n", strlen(xx));
         json_object_put(res);
@@ -80,7 +87,6 @@ void test_json_c()
 void test_file_c()
 {
     apr_pool_t *p;
-    apr_initialize();
     apr_pool_create(&p, NULL);
     apr_status_t code;
     size_t size;
@@ -114,5 +120,13 @@ void test_file_c()
         git_lfs_transform_key(buf3, res);
         printf("<- %s ->\n", res);
     }
+    {
+        if (apr_dir_make_recursive("a/b/c", 0655, p) != APR_SUCCESS)
+        {
+            printf("create folder fail->\n");
+            exit(1);
+        }
+    }
+    apr_pool_destroy(p);
     printf("test file done...\n");
 }

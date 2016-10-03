@@ -17,8 +17,6 @@ depcomp
 
 install-sh
 
-INSTALL
-
 json-c
 
 m4
@@ -34,3 +32,6 @@ test-driver
 test/Makefile
 
 .deps
+
+tmp
+
