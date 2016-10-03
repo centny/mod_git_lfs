@@ -2,7 +2,6 @@
  * mod_git_lfs.c: handle git lfs server
  */
 #include <stdio.h>
-#include <strings.h>
 #include "apr_hash.h"
 #include "ap_config.h"
 #include "ap_provider.h"
