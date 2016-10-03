@@ -7,7 +7,7 @@ Apache Server LFS Module
 
 ### Install
 
-* Download the binary (or compile for your self) from <releases>
+* Download the binary (or compile for your self) from [releases]
 * copy `mod_git_lfs.so` to httpd modules
 * copy `httpd-git.conf(not authz)` to httpd conf.d and edit
 
